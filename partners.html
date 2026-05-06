@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Partners | AIC-JKLU</title>
+    <meta name="description"
+        content="Meet the corporate, academic, technology, investment and peer incubator partners of AIC-JKLU.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, #dbeafe, #f3e8ff, #ffedd5, #ccfbf1);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #751FFF 0%, #F27124 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-white {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #751FFF;
+            border-radius: 10px;
+        }
+
+        /* Partner Card */
+        .partner-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 24px;
+            padding: 32px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.07);
+            position: relative;
+            overflow: hidden;
+            min-height: 180px;
+        }
+
+        .partner-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(117, 31, 255, 0.04), rgba(242, 113, 36, 0.04));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(117, 31, 255, 0.3);
+            box-shadow: 0 20px 50px -10px rgba(117, 31, 255, 0.18);
+        }
+
+        .partner-card:hover::after {
+            opacity: 1;
+        }
+
+        .partner-card img {
+            max-width: 180px;
+            max-height: 110px;
+            object-fit: contain;
+            filter: grayscale(20%);
+            transition: filter 0.4s ease, transform 0.4s ease;
+        }
+
+        .partner-card:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.08);
+        }
+
+        /* Section header pill */
+        .section-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 40px;
+        }
+
+        .pill-corporate {
+            background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+            color: #6d28d9;
+            border: 1.5px solid #c4b5fd;
+        }
+
+        .pill-tech {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            color: #1d4ed8;
+            border: 1.5px solid #93c5fd;
+        }
+
+        .pill-invest {
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+            color: #15803d;
+            border: 1.5px solid #86efac;
+        }
+
+        .pill-peer {
+            background: linear-gradient(135deg, #ffedd5, #fed7aa);
+            color: #c2410c;
+            border: 1.5px solid #fdba74;
+        }
+
+        /* Section divider */
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(117, 31, 255, 0.2), rgba(242, 113, 36, 0.2), transparent);
+            border: none;
+            margin: 64px 0;
+        }
+
+        /* Dropdown nav */
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .dropdown-parent:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Animate in */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            opacity: 0;
+            animation: fadeInUp 0.55s ease forwards;
+        }
+
+        /* Floating stat badges */
+        .stat-badge {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            padding: 20px 32px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 900;
+            line-height: 1;
+            background: linear-gradient(135deg, #751FFF, #F27124);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+
+<body class="text-slate-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-500 py-6" id="mainNav">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div
+                class="flex justify-between items-center h-16 glass rounded-2xl px-8 shadow-sm border border-slate-200/50">
+                <a href="index.html" class="flex items-center gap-4 cursor-pointer">
+                    <img src="https://static.wixstatic.com/media/5349ce_c4d8e09464dc407191330009a29ba4cf~mv2.png"
+                        alt="Logo" class="h-10 w-auto">
+                    <span class="font-extrabold text-2xl tracking-tighter hidden sm:block">AIC-JKLU</span>
+                </a>
+
+                <div class="hidden md:flex space-x-10 items-center font-bold text-slate-600">
+                    <a href="index.html" class="hover:text-[#751FFF] transition-colors">Home</a>
+
+                    <div class="dropdown-parent relative group">
+                        <a href="#" class="hover:text-[#751FFF] transition-colors flex items-center gap-1">
+                            Programs <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                        </a>
+                        <div class="dropdown-menu absolute top-full left-1/2 -translate-x-1/2 pt-4 w-64 z-50">
+                            <div class="glass rounded-2xl shadow-2xl border border-slate-200/50 overflow-hidden">
+                                <a href="incubation.html"
+                                    class="flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors">
+                                    <i data-lucide="rocket" class="w-5 h-5 text-indigo-500"></i>Incubation Program
+                                </a>
+                                <a href="accelerator.html"
+                                    class="flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors">
+                                    <i data-lucide="zap" class="w-5 h-5 text-yellow-500"></i>Accelerator Program
+                                </a>
+                                <a href="rise.html"
+                                    class="flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors">
+                                    <i data-lucide="sun" class="w-5 h-5 text-orange-500"></i>RISE
+                                </a>
+                                <a href="leap.html"
+                                    class="flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors">
+                                    <i data-lucide="trending-up" class="w-5 h-5 text-green-500"></i>LEAP
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-parent relative group">
+                        <a href="#" class="hover:text-[#751FFF] transition-colors flex items-center gap-1">
+                            Stakeholders <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                        </a>
+                        <div class="dropdown-menu absolute top-full left-1/2 -translate-x-1/2 pt-4 w-56 z-50">
+                            <div class="glass rounded-2xl shadow-2xl border border-slate-200/50 overflow-hidden">
+                                <a href="mentors.html"
+                                    class="flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors">
+                                    <i data-lucide="lightbulb" class="w-5 h-5 text-orange-500"></i>Mentors
+                                </a>
+                                <a href="team.html"
+                                    class="flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors">
+                                    <i data-lucide="users" class="w-5 h-5 text-purple-500"></i>Team
+                                </a>
+                                <a href="partners.html"
+                                    class="flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors">
+                                    <i data-lucide="handshake" class="w-5 h-5 text-blue-500"></i>Partners
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://aarohan3.vercel.app/" class="hover:text-[#751FFF] transition-colors">Aarohan
+                        3.0</a>
+                    <a href="index.html#register"
+                        class="bg-gradient-to-r from-[#F27124] to-[#ff8c42] text-white px-8 py-2.5 rounded-xl hover:shadow-lg hover:shadow-orange-500/30 transition-all hover:-translate-y-1">Apply
+                        Now</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-40 pb-16 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 mb-6 text-xs font-bold tracking-widest text-[#751FFF] uppercase bg-purple-100/80 border border-purple-200 rounded-full">
+                <span class="relative flex h-2 w-2">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-600"></span>
+                </span>
+                Stakeholders · Partners
+            </div>
+            <h1 class="text-6xl lg:text-8xl font-black tracking-tighter mb-6">
+                Our <span class="gradient-text">Partners</span>
+            </h1>
+            <p class="text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
+                A powerful network of corporate leaders, academic institutions, technology innovators, investors, and
+                peer incubators fueling the startup ecosystem.
+            </p>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="max-w-4xl mx-auto px-6 mt-14 grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="stat-badge animate-in" style="animation-delay:100ms">
+                <div class="stat-number">18</div>
+                <div class="stat-label">Corporate & Academic</div>
+            </div>
+            <div class="stat-badge animate-in" style="animation-delay:200ms">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Tech Partners</div>
+            </div>
+            <div class="stat-badge animate-in" style="animation-delay:300ms">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Investment Partners</div>
+            </div>
+            <div class="stat-badge animate-in" style="animation-delay:400ms">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Peer Incubators</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── SECTION 1: Corporate & Academic ── -->
+    <section class="py-12" id="corporate">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <div class="section-pill pill-corporate">
+                    <i data-lucide="building-2" class="w-4 h-4"></i>
+                    Corporate &amp; Academic Partners
+                </div>
+                <p class="text-slate-500 font-medium max-w-xl mx-auto">Driving innovation with leading corporates and
+                    academic institutions that shape industry and research.</p>
+            </div>
+
+            <div id="corporateGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5"></div>
+        </div>
+    </section>
+
+    <hr class="section-divider max-w-5xl mx-auto">
+
+    <!-- ── SECTION 2: Technology Partners ── -->
+    <section class="py-12" id="tech">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <div class="section-pill pill-tech">
+                    <i data-lucide="cpu" class="w-4 h-4"></i>
+                    Technology Partners
+                </div>
+                <p class="text-slate-500 font-medium max-w-xl mx-auto">Cutting-edge platforms and tools that power the
+                    startups we incubate.</p>
+            </div>
+
+            <div id="techGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5 max-w-3xl mx-auto"></div>
+        </div>
+    </section>
+
+    <hr class="section-divider max-w-5xl mx-auto">
+
+    <!-- ── SECTION 3: Investment Partners ── -->
+    <section class="py-12" id="investment">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <div class="section-pill pill-invest">
+                    <i data-lucide="trending-up" class="w-4 h-4"></i>
+                    Investment Partners
+                </div>
+                <p class="text-slate-500 font-medium max-w-xl mx-auto">Strategic investors backing the next generation
+                    of high-impact startups.</p>
+            </div>
+
+            <div id="investGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-5 max-w-4xl mx-auto"></div>
+        </div>
+    </section>
+
+    <hr class="section-divider max-w-5xl mx-auto">
+
+    <!-- ── SECTION 4: Peer Incubators ── -->
+    <section class="py-12" id="peer">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <div class="section-pill pill-peer">
+                    <i data-lucide="network" class="w-4 h-4"></i>
+                    Peer Incubators
+                </div>
+                <p class="text-slate-500 font-medium max-w-xl mx-auto">Fellow incubators and startup hubs with whom we
+                    share knowledge, resources, and opportunities.</p>
+            </div>
+
+            <div id="peerGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-5 max-w-4xl mx-auto"></div>
+        </div>
+    </section>
+
+    <!-- Back to Stakeholders CTA -->
+    <section class="py-20">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="glass-white rounded-[32px] p-12 shadow-xl">
+                <h3 class="text-3xl font-black mb-4">Explore More Stakeholders</h3>
+                <p class="text-slate-500 mb-8 font-medium">Meet the mentors and the team that make AIC-JKLU tick.</p>
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <a href="mentors.html"
+                        class="px-8 py-4 bg-gradient-to-r from-[#751FFF] to-[#611acc] text-white rounded-2xl font-bold hover:scale-105 transition-all shadow-lg shadow-purple-500/20">
+                        <i data-lucide="lightbulb" class="w-5 h-5 inline mr-2"></i>Our Mentors
+                    </a>
+                    <a href="team.html"
+                        class="px-8 py-4 bg-gradient-to-r from-[#F27124] to-[#ff8c42] text-white rounded-2xl font-bold hover:scale-105 transition-all shadow-lg shadow-orange-500/20">
+                        <i data-lucide="users" class="w-5 h-5 inline mr-2"></i>Meet the Team
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white/40 backdrop-blur-3xl pt-20 pb-12 border-t border-white/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-sm font-bold">
+                <p>© 2026 JK Lakshmipat University. Startup Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const partnerData = {
+            corporate: [
+                "https://static.wixstatic.com/media/28730e_1937d00594c24162a91c9d4beb078345~mv2.png/v1/fill/w_159,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/1.png",
+                "https://static.wixstatic.com/media/28730e_10da3cfd6a10411abdf0196a15b949fc~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/2.png",
+                "https://static.wixstatic.com/media/28730e_644d7bb40b7c41ce9f89a85d34501302~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/5.png",
+                "https://static.wixstatic.com/media/28730e_ee6a4598274642818975ded58b14e8b3~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/6.png",
+                "https://static.wixstatic.com/media/28730e_7d4a71df628f4ff994cd776b4b2632a0~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3.png",
+                "https://static.wixstatic.com/media/28730e_51e89281a8cb49ce90f6f0b9e66feb3e~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/4.png",
+                "https://static.wixstatic.com/media/28730e_4693be5000c84c0f9da6881f4db07307~mv2.jpg/v1/fill/w_150,h_150,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/p1.jpg",
+                "https://static.wixstatic.com/media/28730e_8fdbad5901c845aea1c6e930762fbbb2~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner.png",
+                "https://static.wixstatic.com/media/28730e_375c952622194145942c992ac04ba658~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2036.png",
+                "https://static.wixstatic.com/media/28730e_2ffa5abd84c54d0bb297ad785fb50735~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2035.png",
+                "https://static.wixstatic.com/media/28730e_f074ee2bbd3640ac956b99c1c3fc2ceb~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2034.png",
+                "https://static.wixstatic.com/media/28730e_cf5b983afda14fc1b3192fb5a2499380~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2033.png",
+                "https://static.wixstatic.com/media/28730e_eb415030638146679755f5b80bf52d58~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2031.png",
+                "https://static.wixstatic.com/media/28730e_53570d2ffc794f64a9f5b8516e293be0~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2030.png",
+                "https://static.wixstatic.com/media/28730e_bda95849ad6b408590addcf73efd2d0f~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2029.png",
+                "https://static.wixstatic.com/media/28730e_ecc07a75fe1549fea6b3c9a51fa1e81c~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2024.png",
+                "https://static.wixstatic.com/media/28730e_da5ddca1c6324f279deb72f346d5df0a~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2023.png",
+                "https://static.wixstatic.com/media/28730e_e569a2e0dd80427b9b227558fecadf2d~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2020.png",
+                "https://static.wixstatic.com/media/28730e_6bbeedbc62854a0f83b15cb8b8225c53~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2019.png",
+                "https://static.wixstatic.com/media/28730e_42ab5a54ebaf4c4e991c4fb88dae8135~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2017.png",
+                "https://static.wixstatic.com/media/28730e_c262ee2aba7f49078bc2e1713ae712e8~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2016.png",
+                "https://static.wixstatic.com/media/28730e_149a2d4ed77e4f35a34b06da03a52881~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2015.png",
+                "https://static.wixstatic.com/media/28730e_a96ac1f41c8e490c89969b3dc9466f53~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2013.png",
+                "https://static.wixstatic.com/media/28730e_642a1ee1867149bd830a92d5f54317ac~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%209.png"
+            ],
+            tech: [
+                "https://static.wixstatic.com/media/28730e_60d07ffcc7ad4dd5b3964ab2b847e18b~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20(1).png",
+                "https://static.wixstatic.com/media/28730e_8727e92e886147a2b46d37b7c0cabf86~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2026.png",
+                "https://static.wixstatic.com/media/28730e_979fd39d80a0442fa116ed82098ded5c~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2022.png",
+                "https://static.wixstatic.com/media/28730e_467a3c27d03c4e08afc175a126953b32~mv2.jpeg/v1/fill/w_150,h_150,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/f6s.jpeg"
+            ],
+            invest: [
+                "https://static.wixstatic.com/media/28730e_bda95849ad6b408590addcf73efd2d0f~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2029.png",
+                "https://static.wixstatic.com/media/28730e_ce1e522f1859424db63132826a73adfe~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2025.png",
+                "https://static.wixstatic.com/media/28730e_a465a5b211d046abaa9a250606b4cbed~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2021.png",
+                "https://static.wixstatic.com/media/28730e_b09415d13b3742ad938f66e8dc891e71~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2014.png",
+                "https://static.wixstatic.com/media/28730e_a6862c35252345f381433aa233009cb1~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2027.png"
+            ],
+            peer: [
+                "https://static.wixstatic.com/media/28730e_f39b5224fc624f3c82245e95be12588e~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2012.png",
+                "https://static.wixstatic.com/media/28730e_c1a2d79f087e44dba1dc17f5f39ebc54~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2010.png",
+                "https://static.wixstatic.com/media/28730e_5c7e668048bd46ef9aec30c58407fbda~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%207.png",
+                "https://static.wixstatic.com/media/28730e_db8b4bb33ada4fa5acab7a5f67e0d067~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%208.png",
+                "https://static.wixstatic.com/media/28730e_8a75b0eda0504a31ad98d4fef081990c~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AIC%20Patner%20-%2011.png"
+            ]
+        };
+
+        function populateGrid(gridId, logos) {
+            const grid = document.getElementById(gridId);
+            logos.forEach((src, i) => {
+                const card = document.createElement('div');
+                card.className = 'partner-card animate-in';
+                card.style.animationDelay = `${i * 50}ms`;
+                card.innerHTML = `<img src="${src}" alt="Partner ${i + 1}" loading="lazy">`;
+                grid.appendChild(card);
+            });
+        }
+
+        populateGrid('corporateGrid', partnerData.corporate);
+        populateGrid('techGrid', partnerData.tech);
+        populateGrid('investGrid', partnerData.invest);
+        populateGrid('peerGrid', partnerData.peer);
+
+        // Re-init icons after dynamic content
+        lucide.createIcons();
+
+        // Nav scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('mainNav');
+            if (window.scrollY > 80) { nav.classList.remove('py-6'); nav.classList.add('py-2'); }
+            else { nav.classList.remove('py-2'); nav.classList.add('py-6'); }
+        });
+
+        // Intersection Observer for animate-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-in').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>

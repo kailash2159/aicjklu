@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Longevity Economy Accelerator Program (LEAP) | AIC-JKLU</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, #dbeafe, #f3e8ff, #ffedd5, #ccfbf1);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #751FFF 0%, #F27124 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-button {
+            background: linear-gradient(135deg, #751FFF 0%, #611acc 100%);
+        }
+
+        .orange-gradient {
+            background: linear-gradient(135deg, #F27124 0%, #ff8c42 100%);
+        }
+
+        .reveal {
+            opacity: 0;
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal-up {
+            transform: translateY(50px);
+        }
+
+        .reveal-left {
+            transform: translateX(-50px);
+        }
+
+        .reveal-right {
+            transform: translateX(50px);
+        }
+
+        .reveal-scale {
+            transform: scale(0.9);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translate(0, 0) scale(1);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(1deg);
+            }
+        }
+
+        .animate-float {
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero-parallax {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.95) 30%, rgba(255, 255, 255, 0.1) 100%), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=2000');
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #751FFF;
+            border-radius: 10px;
+        }
+
+        /* Stakeholders Dropdown */
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
+        }
+
+        .dropdown-parent:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 24px;
+            transition: all 0.2s ease;
+            color: #475569;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(117, 31, 255, 0.06);
+            color: #751FFF;
+            padding-left: 28px;
+        }
+
+        .dropdown-item i {
+            flex-shrink: 0;
+        }
+
+        .dropdown-item+.dropdown-item {
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+        }
+    </style>
+</head>
+
+<body class="text-slate-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-500 py-6" id="mainNav">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div
+                class="flex justify-between items-center h-16 glass rounded-2xl px-8 shadow-sm border border-slate-200/50">
+                <a href="index.html" class="flex items-center gap-4 cursor-pointer">
+                    <img src="https://static.wixstatic.com/media/5349ce_c4d8e09464dc407191330009a29ba4cf~mv2.png"
+                        alt="Logo" class="h-10 w-auto">
+                    <span class="font-extrabold text-2xl tracking-tighter hidden sm:block">AIC-JKLU</span>
+                </a>
+
+                <div class="hidden md:flex space-x-10 items-center font-bold text-slate-600">
+                    <a href="index.html" class="hover:text-[#751FFF] transition-colors">Home</a>
+
+                    <div class="dropdown-parent relative group">
+                        <a href="#" class="hover:text-[#751FFF] transition-colors flex items-center gap-1">
+                            Programs
+                            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                        </a>
+                        <div
+                            class="dropdown-menu absolute top-full left-1/2 -translate-x-1/2 pt-4 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <div class="glass rounded-2xl shadow-2xl border border-slate-200/50 overflow-hidden">
+                                <a href="incubation.html"
+                                    class="dropdown-item flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors">
+                                    <i data-lucide="rocket" class="w-5 h-5 text-indigo-500"></i>
+                                    Incubation Program
+                                </a>
+                                <a href="accelerator.html"
+                                    class="dropdown-item flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors">
+                                    <i data-lucide="zap" class="w-5 h-5 text-yellow-500"></i>
+                                    Accelerator Program
+                                </a>
+                                <a href="rise.html"
+                                    class="dropdown-item flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors">
+                                    <i data-lucide="sun" class="w-5 h-5 text-orange-500"></i>
+                                    RISE
+                                </a>
+                                <a href="leap.html"
+                                    class="dropdown-item flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors">
+                                    <i data-lucide="trending-up" class="w-5 h-5 text-green-500"></i>
+                                    LEAP
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-parent relative group">
+                        <a href="#" class="hover:text-[#751FFF] transition-colors flex items-center gap-1">
+                            Stakeholders
+                            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                        </a>
+                        <div
+                            class="dropdown-menu absolute top-full left-1/2 -translate-x-1/2 pt-4 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <div class="glass rounded-2xl shadow-2xl border border-slate-200/50 overflow-hidden">
+                                <a href="mentors.html"
+                                    class="dropdown-item flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <i data-lucide="lightbulb" class="w-5 h-5 text-orange-500"></i>
+                                    Mentors
+                                </a>
+                                <a href="team.html"
+                                    class="dropdown-item flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <i data-lucide="users" class="w-5 h-5 text-purple-500"></i>
+                                    Team
+                                </a>
+                                <a href="partners.html"
+                                    class="dropdown-item flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <i data-lucide="handshake" class="w-5 h-5 text-blue-500"></i>
+                                    Partners
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://aarohan3.vercel.app/" class="hover:text-[#751FFF] transition-colors">Aarohan
+                        3.0</a>
+                    <a href="index.html#register"
+                        class="orange-gradient text-white px-8 py-2.5 rounded-xl hover:shadow-lg hover:shadow-orange-500/30 transition-all hover:-translate-y-1">Apply
+                        Now</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+        class="relative min-h-screen flex items-center pt-20 overflow-hidden hero-parallax border-y border-white/50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-3/5 reveal reveal-left active">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 mb-8 text-xs font-bold tracking-widest text-[#751FFF] uppercase bg-purple-100/80 border border-purple-200 rounded-full">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-600"></span>
+                        </span>
+                        Focus Sector
+                    </div>
+
+                    <h1 class="text-6xl lg:text-[90px] font-black text-slate-900 mb-8 leading-[0.95] tracking-tighter">
+                        Longevity <br><span class="gradient-text">Economy</span><br>Accelerator.
+                    </h1>
+                    <p class="text-xl text-slate-700 max-w-xl mb-12 leading-relaxed font-semibold">
+                        A 6-month incubation journey designed to empower Agetech and Eldercare startups with investment
+                        opportunities, scalability pathways, and market validation support.
+                    </p>
+                    <div class="flex flex-wrap gap-5">
+                        <a href="https://www.f6s.com/aic-jklu-leap-2/apply" target="_blank"
+                            class="px-12 py-6 gradient-button text-white rounded-2xl font-black text-xl hover:scale-[1.05] active:scale-[0.98] transition-all shadow-2xl shadow-purple-600/30">Apply
+                            Now</a>
+                    </div>
+                </div>
+
+                <div class="lg:w-2/5 relative reveal reveal-right active hidden lg:block">
+                    <div class="glass p-8 rounded-[32px] shadow-2xl border border-white/50 animate-float">
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                                    <i data-lucide="clock" class="text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-slate-500 uppercase">Duration</p>
+                                    <p class="text-lg font-black">6 Months Incubation</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
+                                    <i data-lucide="target" class="text-orange-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-slate-500 uppercase">Focus Areas</p>
+                                    <p class="text-lg font-black">Agetech & Eldercare</p>
+                                </div>
+                            </div>
+                            <div class="pt-4 border-t border-slate-100">
+                                <p class="text-slate-500 font-medium italic">"Building the future of care for our aging
+                                    population."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-32 relative bg-white/40 backdrop-blur-3xl border-y border-white/50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-20 reveal reveal-up">
+                <h2 class="text-5xl lg:text-[64px] font-black text-[#1a202c]">About the <span
+                        class="gradient-text">Program</span></h2>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+                <div class="lg:w-1/2 reveal reveal-left">
+                    <div
+                        class="w-full h-[500px] rounded-[40px] bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center shadow-lg border border-white/60 relative overflow-hidden">
+                        <i data-lucide="heart-handshake" class="w-48 h-48 text-purple-300 opacity-50 absolute"></i>
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1000"
+                            alt="Longevity Economy" class="w-full h-full object-cover z-10 opacity-90 rounded-[40px]">
+                    </div>
+                </div>
+                <div class="lg:w-1/2 reveal reveal-right">
+                    <p class="text-xl text-slate-700 leading-relaxed font-medium mb-6">
+                        The Longevity Economy Accelerator Program (LEAP) is a comprehensive 6-month incubation
+                        initiative designed to support Agetech and Eldercare startups. Our program focuses on providing
+                        investment opportunities, expanding customer bases, validating proof of concepts, and
+                        facilitating entry into new markets.
+                    </p>
+                    <p class="text-xl text-slate-700 leading-relaxed font-medium">
+                        We believe in nurturing innovative solutions that address the unique challenges and
+                        opportunities in the eldercare sector, helping startups scale their impact while building
+                        sustainable business models.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eligibility & Selection Section -->
+    <section class="py-32 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Eligibility -->
+                <div
+                    class="glass p-10 lg:p-14 rounded-[40px] border border-white/60 shadow-xl reveal reveal-up hover:-translate-y-2 transition-transform duration-300">
+                    <h3 class="text-3xl font-black text-slate-900 mb-8 inline-block border-b-4 border-[#F27124] pb-2">
+                        Eligibility Criteria</h3>
+                    <ul class="space-y-5">
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="mt-1 w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center text-[#F27124] flex-shrink-0">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-lg font-medium text-slate-700">Startups at minimum MVP stage</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="mt-1 w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center text-[#F27124] flex-shrink-0">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-lg font-medium text-slate-700">Working on innovative products, services,
+                                or processes</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="mt-1 w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center text-[#F27124] flex-shrink-0">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-lg font-medium text-slate-700">Creating customized solutions for elderly
+                                population</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="mt-1 w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center text-[#F27124] flex-shrink-0">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-lg font-medium text-slate-700">Registered entity (Pvt. Ltd.
+                                preferred)</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="mt-1 w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center text-[#F27124] flex-shrink-0">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-lg font-medium text-slate-700">Solving critical national/social problems
+                                innovatively</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Selection -->
+                <div class="glass p-10 lg:p-14 rounded-[40px] border border-white/60 shadow-xl reveal reveal-up hover:-translate-y-2 transition-transform duration-300"
+                    style="transition-delay: 150ms;">
+                    <h3 class="text-3xl font-black text-slate-900 mb-8 inline-block border-b-4 border-[#751FFF] pb-2">
+                        Selection Process</h3>
+                    <ul class="space-y-5">
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="mt-1 w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center text-[#751FFF] flex-shrink-0">
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-lg font-medium text-slate-700">Application review and screening</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="mt-1 w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center text-[#751FFF] flex-shrink-0">
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-lg font-medium text-slate-700">Technical and business model
+                                evaluation</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="mt-1 w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center text-[#751FFF] flex-shrink-0">
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-lg font-medium text-slate-700">Impact assessment on eldercare
+                                sector</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="mt-1 w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center text-[#751FFF] flex-shrink-0">
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-lg font-medium text-slate-700">MoU signing with AIC-JKLU</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="mt-1 w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center text-[#751FFF] flex-shrink-0">
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-lg font-medium text-slate-700">Onboarding to incubation program</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offerings Section -->
+    <section class="py-32 bg-white/40 backdrop-blur-3xl border-y border-white/50 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-20 reveal reveal-up">
+                <h2 class="text-5xl lg:text-[64px] font-black text-slate-900">What We <span
+                        class="text-[#F27124]">Offer</span></h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div
+                    class="bg-white/80 p-8 rounded-3xl shadow-lg border border-slate-100 hover:-translate-y-2 transition-transform duration-300 reveal reveal-up">
+                    <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="target" class="text-blue-500 w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Mentorship Program</h4>
+                    <p class="text-slate-600 font-medium leading-relaxed">Access to experienced mentors through matching
+                        program, weekly check-ins, and exclusive hours with visiting experts.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white/80 p-8 rounded-3xl shadow-lg border border-slate-100 hover:-translate-y-2 transition-transform duration-300 reveal reveal-up"
+                    style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="cloud" class="text-orange-500 w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">AWS Credits</h4>
+                    <p class="text-slate-600 font-medium leading-relaxed">$500 worth of AWS credits for each registered
+                        idea to support your technical infrastructure needs.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white/80 p-8 rounded-3xl shadow-lg border border-slate-100 hover:-translate-y-2 transition-transform duration-300 reveal reveal-up"
+                    style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="microscope" class="text-purple-500 w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Research Access</h4>
+                    <p class="text-slate-600 font-medium leading-relaxed">Full access to JKLU research and development
+                        office facilities and exclusive university resources.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white/80 p-8 rounded-3xl shadow-lg border border-slate-100 hover:-translate-y-2 transition-transform duration-300 reveal reveal-up"
+                    style="transition-delay: 300ms;">
+                    <div class="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="coins" class="text-green-500 w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Government Schemes</h4>
+                    <p class="text-slate-600 font-medium leading-relaxed">Access to government schemes and funds through
+                        AIM NITI Aayog network and deep startup connections.</p>
+                </div>
+
+                <!-- Card 5 -->
+                <div
+                    class="bg-white/80 p-8 rounded-3xl shadow-lg border border-slate-100 hover:-translate-y-2 transition-transform duration-300 reveal reveal-up">
+                    <div class="w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="building" class="text-indigo-500 w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Co-working Space</h4>
+                    <p class="text-slate-600 font-medium leading-relaxed">Fully equipped co-working space with modern
+                        amenities for your team to work seamlessly and collaborate.</p>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-white/80 p-8 rounded-3xl shadow-lg border border-slate-100 hover:-translate-y-2 transition-transform duration-300 reveal reveal-up"
+                    style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="book-open" class="text-red-500 w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Learning Resources</h4>
+                    <p class="text-slate-600 font-medium leading-relaxed">World-class content for venture development,
+                        business planning, and industry-specific market roundtables.</p>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="bg-white/80 p-8 rounded-3xl shadow-lg border border-slate-100 hover:-translate-y-2 transition-transform duration-300 reveal reveal-up"
+                    style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-yellow-50 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="scale" class="text-yellow-600 w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Professional Services</h4>
+                    <p class="text-slate-600 font-medium leading-relaxed">Auxiliary service support including
+                        comprehensive legal, accounting, and other core business essentials.</p>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="bg-white/80 p-8 rounded-3xl shadow-lg border border-slate-100 hover:-translate-y-2 transition-transform duration-300 reveal reveal-up"
+                    style="transition-delay: 300ms;">
+                    <div class="w-14 h-14 bg-teal-50 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="users" class="text-teal-500 w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Peer Learning</h4>
+                    <p class="text-slate-600 font-medium leading-relaxed">Industry-specific round tables on need basis
+                        for powerful peer-to-peer learning and networking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Tenure -->
+    <section class="py-32 relative">
+        <div class="max-w-5xl mx-auto px-6 lg:px-8">
+            <div
+                class="gradient-button p-10 lg:p-16 rounded-[40px] shadow-2xl text-white relative overflow-hidden reveal reveal-up">
+                <div class="absolute inset-0 opacity-10"
+                    style="background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');">
+                </div>
+
+                <h3 class="text-4xl font-black mb-8 relative z-10">Program Tenure & Costs</h3>
+
+                <div class="space-y-6 relative z-10 text-lg text-purple-50 font-medium leading-relaxed">
+                    <p>
+                        Startups will be incubated for an initial period of <strong class="text-white">6
+                            months</strong>. Upon successful completion, participants become alumni of the AIC-JKLU
+                        incubation program.
+                    </p>
+                    <p>
+                        <strong class="text-white">Service Charges:</strong> A nominal monthly service charge will be
+                        levied for the first 9 months. After the initial 9-month period, a utilization charge of
+                        ₹3,000/- + tax per person will be applicable.
+                    </p>
+                    <p>
+                        <strong class="text-white">Extension:</strong> AIC-JKLU may, at its discretion, permit companies
+                        to extend their stay for a maximum additional period of 3 months based on performance and needs
+                        assessment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white/40 backdrop-blur-3xl pt-32 pb-12 overflow-hidden border-t border-white/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-16 mb-20">
+                <div class="md:col-span-2 space-y-8">
+                    <img src="https://static.wixstatic.com/media/5349ce_c4d8e09464dc407191330009a29ba4cf~mv2.png"
+                        alt="Logo" class="h-16">
+                    <p class="text-slate-500 max-w-sm text-lg leading-relaxed font-medium">Empowering entrepreneurs to
+                        solve real-world problems through technology, space, and a world-class academic network.</p>
+                </div>
+                <div>
+                    <h4 class="font-black mb-8 text-orange-500 uppercase tracking-widest text-xs">The Hub</h4>
+                    <p class="text-slate-600 leading-relaxed font-bold">AIC-JKLU Campus,<br>Near Mahindra SEZ,<br>Jaipur
+                        302026, Rajasthan</p>
+                </div>
+
+            </div>
+            <div
+                class="pt-12 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-sm font-bold">
+                <p>© 2026 JK Lakshmipat University. Startup Hub. All rights reserved.</p>
+
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, observerOptions);
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('mainNav');
+            if (window.scrollY > 80) { nav.classList.remove('py-6'); nav.classList.add('py-2'); }
+            else { nav.classList.remove('py-2'); nav.classList.add('py-6'); }
+        });
+    </script>
+</body>
+
+</html>

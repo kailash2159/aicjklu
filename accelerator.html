@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accelerator Program | AIC-JKLU</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, #dbeafe, #f3e8ff, #ffedd5, #ccfbf1);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #751FFF 0%, #F27124 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-button {
+            background: linear-gradient(135deg, #751FFF 0%, #611acc 100%);
+        }
+
+        .orange-gradient {
+            background: linear-gradient(135deg, #F27124 0%, #ff8c42 100%);
+        }
+
+        .reveal {
+            opacity: 0;
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal-up {
+            transform: translateY(50px);
+        }
+
+        .reveal-left {
+            transform: translateX(-50px);
+        }
+
+        .reveal-right {
+            transform: translateX(50px);
+        }
+
+        .reveal-scale {
+            transform: scale(0.9);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translate(0, 0) scale(1);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(1deg);
+            }
+        }
+
+        .animate-float {
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero-parallax {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.95) 30%, rgba(255, 255, 255, 0.1) 100%), url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop');
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #751FFF;
+            border-radius: 10px;
+        }
+
+        /* Nav dropdown */
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .dropdown-parent:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="text-slate-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-500 py-6" id="mainNav">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div
+                class="flex justify-between items-center h-16 glass rounded-2xl px-8 shadow-sm border border-slate-200/50">
+                <a href="index.html" class="flex items-center gap-4 cursor-pointer">
+                    <img src="https://static.wixstatic.com/media/5349ce_c4d8e09464dc407191330009a29ba4cf~mv2.png"
+                        alt="Logo" class="h-10 w-auto">
+                    <span class="font-extrabold text-2xl tracking-tighter hidden sm:block">AIC-JKLU</span>
+                </a>
+
+                <div class="hidden md:flex space-x-10 items-center font-bold text-slate-600">
+                    <a href="index.html" class="hover:text-[#751FFF] transition-colors">Home</a>
+
+                    <div class="dropdown-parent relative group">
+                        <a href="#" class="hover:text-[#751FFF] transition-colors flex items-center gap-1">
+                            Programs
+                            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                        </a>
+                        <div
+                            class="dropdown-menu absolute top-full left-1/2 -translate-x-1/2 pt-4 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <div class="glass rounded-2xl shadow-2xl border border-slate-200/50 overflow-hidden">
+                                <a href="incubation.html"
+                                    class="dropdown-item flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors">
+                                    <i data-lucide="rocket" class="w-5 h-5 text-indigo-500"></i>
+                                    Incubation Program
+                                </a>
+                                <a href="accelerator.html"
+                                    class="dropdown-item flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors">
+                                    <i data-lucide="zap" class="w-5 h-5 text-yellow-500"></i>
+                                    Accelerator Program
+                                </a>
+                                <a href="rise.html"
+                                    class="dropdown-item flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors">
+                                    <i data-lucide="sun" class="w-5 h-5 text-orange-500"></i>
+                                    RISE
+                                </a>
+                                <a href="leap.html"
+                                    class="dropdown-item flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors">
+                                    <i data-lucide="trending-up" class="w-5 h-5 text-green-500"></i>
+                                    LEAP
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-parent relative group">
+                        <a href="#" class="hover:text-[#751FFF] transition-colors flex items-center gap-1">
+                            Stakeholders
+                            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                        </a>
+                        <div
+                            class="dropdown-menu absolute top-full left-1/2 -translate-x-1/2 pt-4 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <div class="glass rounded-2xl shadow-2xl border border-slate-200/50 overflow-hidden">
+                                <a href="mentors.html"
+                                    class="dropdown-item flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <i data-lucide="lightbulb" class="w-5 h-5 text-orange-500"></i>
+                                    Mentors
+                                </a>
+                                <a href="team.html"
+                                    class="dropdown-item flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <i data-lucide="users" class="w-5 h-5 text-purple-500"></i>
+                                    Team
+                                </a>
+                                <a href="partners.html"
+                                    class="dropdown-item flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <i data-lucide="handshake" class="w-5 h-5 text-blue-500"></i>
+                                    Partners
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://aarohan3.vercel.app/" class="hover:text-[#751FFF] transition-colors">Aarohan
+                        3.0</a>
+                    <a href="index.html#register"
+                        class="orange-gradient text-white px-8 py-2.5 rounded-xl hover:shadow-lg hover:shadow-orange-500/30 transition-all hover:-translate-y-1">Apply
+                        Now</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+        class="relative min-h-screen flex items-center pt-20 overflow-hidden hero-parallax border-y border-white/50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-3/5 reveal reveal-left active">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 mb-8 text-xs font-bold tracking-widest text-[#16a34a] uppercase bg-green-100/80 border border-green-200 rounded-full">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-green-600"></span>
+                        </span>
+                        Presented by JK Paper & AIC-JKLU
+                    </div>
+
+                    <h1 class="text-6xl lg:text-[80px] font-black text-slate-900 mb-8 leading-[0.95] tracking-tighter">
+                        Sustainable<br><span class="gradient-text">Biomaterial</span><br>Solutions.
+                    </h1>
+                    <p class="text-xl text-slate-700 max-w-xl mb-12 leading-relaxed font-semibold">
+                        Your chance to be part of a game-changing cohort that aims to redefine the future of sustainable
+                        and bio-based products.
+                    </p>
+                    <div class="flex flex-wrap gap-5">
+                        <a href="https://docs.google.com/forms/u/1/d/e/1FAIpQLSfzYnFze4RlHqlPkKtrMQV9tL8-qkTC-WJZIkfiIM7DNMu9xQ/viewform?usp=send_form"
+                            target="_blank"
+                            class="px-12 py-6 bg-gradient-to-r from-green-600 to-emerald-500 text-white rounded-2xl font-black text-xl hover:scale-[1.05] active:scale-[0.98] transition-all shadow-2xl shadow-green-600/30">Register
+                            Now</a>
+                    </div>
+                </div>
+
+                <div class="lg:w-2/5 relative reveal reveal-right active hidden lg:block">
+                    <div class="glass p-8 rounded-[32px] shadow-2xl border border-white/50 animate-float">
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                                    <i data-lucide="leaf" class="text-green-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-slate-500 uppercase">Focus Area</p>
+                                    <p class="text-lg font-black">Biomaterials & Pulp</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                                    <i data-lucide="indian-rupee" class="text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-slate-500 uppercase">Funding</p>
+                                    <p class="text-lg font-black">INR 5 Million+</p>
+                                </div>
+                            </div>
+                            <div class="pt-4 border-t border-slate-100">
+                                <p class="text-slate-500 font-medium italic">"Redefining the future with sustainable
+                                    alternatives."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Statements Section -->
+    <section class="py-32 relative bg-white/40 backdrop-blur-3xl border-y border-white/50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-20 reveal reveal-up">
+                <h2 class="text-5xl lg:text-[64px] font-black text-[#1a202c]">Problem <span
+                        class="gradient-text">Statements</span></h2>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- PS 1 -->
+                <div
+                    class="glass p-10 lg:p-14 rounded-[40px] border border-white/60 shadow-xl reveal reveal-left hover:-translate-y-2 transition-transform duration-300">
+                    <h3 class="text-6xl font-black text-[#F27124]/20 absolute top-8 right-8">01</h3>
+                    <h3 class="text-3xl font-black text-slate-900 mb-6 relative z-10">Lignocellulosic Biomass</h3>
+                    <p class="text-lg font-medium text-slate-700 leading-relaxed relative z-10 mb-8">
+                        Lignocellulosic biomass-based value-added product/solutions as a replacement for fossil-derived
+                        materials for application in industries such as healthcare, pharma, textile, biomaterials,
+                        packaging, energy, etc. with raw material available in India.
+                    </p>
+                    <a href="https://www.instagram.com/reel/Cv6s6AKNWcY/" target="_blank"
+                        class="inline-flex items-center gap-2 text-orange-600 font-bold hover:text-orange-700 transition-colors relative z-10">
+                        KNOW MORE <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+                <!-- PS 2 -->
+                <div class="glass p-10 lg:p-14 rounded-[40px] border border-white/60 shadow-xl reveal reveal-right hover:-translate-y-2 transition-transform duration-300"
+                    style="transition-delay: 150ms;">
+                    <h3 class="text-6xl font-black text-[#751FFF]/20 absolute top-8 right-8">02</h3>
+                    <h3 class="text-3xl font-black text-slate-900 mb-6 relative z-10">Value-added Bio-based Products
+                    </h3>
+                    <p class="text-lg font-medium text-slate-700 leading-relaxed relative z-10 mb-8">
+                        Value-added bio-based products from existing Pulp and Paper manufacturing sites (using hardwood
+                        and Kraft pulping process) leveraging input, side and/or waste streams.
+                    </p>
+                    <a href="https://www.instagram.com/aicjklu_/" target="_blank"
+                        class="inline-flex items-center gap-2 text-[#751FFF] font-bold hover:text-[#611acc] transition-colors relative z-10">
+                        KNOW MORE <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline & Benefits Section -->
+    <section class="py-32 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-20 reveal reveal-up">
+                <h2 class="text-5xl lg:text-[64px] font-black text-slate-900">Timeline & <span
+                        class="text-[#10b981]">Benefits</span></h2>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Timeline -->
+                <div class="glass p-10 lg:p-14 rounded-[40px] border border-white/60 shadow-xl reveal reveal-left">
+                    <h3 class="text-3xl font-black text-slate-900 mb-8 inline-block border-b-4 border-slate-900 pb-2">
+                        Program Timeline</h3>
+                    <div
+                        class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+                        <div
+                            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-100 text-slate-500 group-[.is-active]:bg-emerald-500 group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                                <i data-lucide="calendar" class="w-4 h-4"></i>
+                            </div>
+                            <div
+                                class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass p-4 rounded-2xl border border-white/50 shadow-sm">
+                                <span class="text-emerald-500 font-bold text-sm tracking-wide">24th July - 31st
+                                    Aug</span>
+                                <div class="font-bold text-slate-900 mt-1">Application Round</div>
+                                <div class="text-slate-500 text-sm mt-1 font-medium">Submit your innovative proposals
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-100 text-slate-500 group-[.is-active]:bg-blue-500 group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                                <i data-lucide="search" class="w-4 h-4"></i>
+                            </div>
+                            <div
+                                class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass p-4 rounded-2xl border border-white/50 shadow-sm">
+                                <span class="text-blue-500 font-bold text-sm tracking-wide">1st Sept - 30th Sept</span>
+                                <div class="font-bold text-slate-900 mt-1">Evaluation Round</div>
+                                <div class="text-slate-500 text-sm mt-1 font-medium">Expert review and selection</div>
+                            </div>
+                        </div>
+                        <div
+                            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-100 text-slate-500 group-[.is-active]:bg-purple-500 group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                                <i data-lucide="rocket" class="w-4 h-4"></i>
+                            </div>
+                            <div
+                                class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass p-4 rounded-2xl border border-white/50 shadow-sm">
+                                <span class="text-purple-500 font-bold text-sm tracking-wide">1st Oct - 31st Jan</span>
+                                <div class="font-bold text-slate-900 mt-1">Programme & Activities</div>
+                                <div class="text-slate-500 text-sm mt-1 font-medium">Workshops, mentorship & development
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-100 text-slate-500 group-[.is-active]:bg-orange-500 group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                                <i data-lucide="presentation" class="w-4 h-4"></i>
+                            </div>
+                            <div
+                                class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass p-4 rounded-2xl border border-white/50 shadow-sm">
+                                <span class="text-orange-500 font-bold text-sm tracking-wide">16th Feb, 2024</span>
+                                <div class="font-bold text-slate-900 mt-1">Demo Day</div>
+                                <div class="text-slate-500 text-sm mt-1 font-medium">Showcase your achievements</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Benefits -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 relative z-10 reveal reveal-right"
+                    style="transition-delay: 150ms;">
+                    <div
+                        class="bg-white/80 p-6 rounded-3xl shadow-lg border border-slate-100 hover:-translate-y-2 transition-transform duration-300">
+                        <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mb-4">
+                            <i data-lucide="book-open" class="text-blue-500 w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">Workshops & Learnings</h4>
+                        <p class="text-slate-600 font-medium text-sm leading-relaxed">Comprehensive training programs
+                            designed for growth</p>
+                    </div>
+                    <div
+                        class="bg-white/80 p-6 rounded-3xl shadow-lg border border-slate-100 hover:-translate-y-2 transition-transform duration-300">
+                        <div class="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center mb-4">
+                            <i data-lucide="building-2" class="text-indigo-500 w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">Infrastructure</h4>
+                        <p class="text-slate-600 font-medium text-sm leading-relaxed">Access to state-of-the-art
+                            facilities and resources</p>
+                    </div>
+                    <div
+                        class="bg-white/80 p-6 rounded-3xl shadow-lg border border-slate-100 hover:-translate-y-2 transition-transform duration-300">
+                        <div class="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center mb-4">
+                            <i data-lucide="indian-rupee" class="text-green-500 w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">INR 5M+ Investment</h4>
+                        <p class="text-slate-600 font-medium text-sm leading-relaxed">Significant funding opportunities
+                            for qualified startups</p>
+                    </div>
+                    <div
+                        class="bg-white/80 p-6 rounded-3xl shadow-lg border border-slate-100 hover:-translate-y-2 transition-transform duration-300">
+                        <div class="w-12 h-12 bg-orange-50 rounded-2xl flex items-center justify-center mb-4">
+                            <i data-lucide="users" class="text-orange-500 w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">Expert Mentorship</h4>
+                        <p class="text-slate-600 font-medium text-sm leading-relaxed">40+ hours of guidance from
+                            industry leaders</p>
+                    </div>
+                    <div
+                        class="bg-white/80 p-6 rounded-3xl shadow-lg border border-slate-100 hover:-translate-y-2 transition-transform duration-300">
+                        <div class="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center mb-4">
+                            <i data-lucide="network" class="text-purple-500 w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">Networking Galore</h4>
+                        <p class="text-slate-600 font-medium text-sm leading-relaxed">Connect with 30+ potential
+                            partners and collaborators</p>
+                    </div>
+                    <div
+                        class="bg-white/80 p-6 rounded-3xl shadow-lg border border-slate-100 hover:-translate-y-2 transition-transform duration-300">
+                        <div class="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center mb-4">
+                            <i data-lucide="leaf" class="text-emerald-500 w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">Greener Tomorrow</h4>
+                        <p class="text-slate-600 font-medium text-sm leading-relaxed">Contribute to sustainable
+                            development goals</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outcomes Section -->
+    <section class="py-32 bg-slate-900/90 backdrop-blur-3xl border-y border-white/50 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10"
+            style="background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');"></div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-20 reveal reveal-up">
+                <h2 class="text-5xl lg:text-[64px] font-black text-white">Programme <span
+                        class="text-emerald-400">Outcomes</span></h2>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div
+                    class="glass border-white/10 p-10 rounded-[32px] text-center reveal reveal-left shadow-2xl bg-white/5">
+                    <div class="w-20 h-20 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="leaf" class="text-emerald-400 w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-3xl font-black text-white mb-4">Sustainable Solutions</h3>
+                    <p class="text-slate-400 text-lg font-medium leading-relaxed">Quality paper production with
+                        minimized environmental impact</p>
+                </div>
+                <div
+                    class="glass border-white/10 p-10 rounded-[32px] text-center reveal reveal-right shadow-2xl bg-white/5">
+                    <div class="w-20 h-20 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="handshake" class="text-blue-400 w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-3xl font-black text-white mb-4">Acquisition Opportunities</h3>
+                    <p class="text-slate-400 text-lg font-medium leading-relaxed">Potential partnerships and acquisition
+                        prospects for scaling rapidly</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white/40 backdrop-blur-3xl pt-32 pb-12 overflow-hidden border-t border-white/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-16 mb-20">
+                <div class="md:col-span-2 space-y-8">
+                    <img src="https://static.wixstatic.com/media/5349ce_c4d8e09464dc407191330009a29ba4cf~mv2.png"
+                        alt="Logo" class="h-16">
+                    <p class="text-slate-500 max-w-sm text-lg leading-relaxed font-medium">Empowering entrepreneurs to
+                        solve real-world problems through technology, space, and a world-class academic network.</p>
+                </div>
+                <div>
+                    <h4 class="font-black mb-8 text-orange-500 uppercase tracking-widest text-xs">The Hub</h4>
+                    <p class="text-slate-600 leading-relaxed font-bold">AIC-JKLU Campus,<br>Near Mahindra SEZ,<br>Jaipur
+                        302026, Rajasthan</p>
+                </div>
+            </div>
+            <div
+                class="pt-12 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-sm font-bold">
+                <p>© 2026 JK Lakshmipat University. Startup Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, observerOptions);
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('mainNav');
+            if (window.scrollY > 80) { nav.classList.remove('py-6'); nav.classList.add('py-2'); }
+            else { nav.classList.remove('py-2'); nav.classList.add('py-6'); }
+        });
+    </script>
+</body>
+
+</html>

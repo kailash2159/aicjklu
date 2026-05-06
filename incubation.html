@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incubation Program | AIC-JKLU</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, #dbeafe, #f3e8ff, #ffedd5, #ccfbf1);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #751FFF 0%, #F27124 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-button {
+            background: linear-gradient(135deg, #751FFF 0%, #611acc 100%);
+        }
+
+        .orange-gradient {
+            background: linear-gradient(135deg, #F27124 0%, #ff8c42 100%);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-white {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .reveal {
+            opacity: 0;
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal-up {
+            transform: translateY(50px);
+        }
+
+        .reveal-left {
+            transform: translateX(-50px);
+        }
+
+        .reveal-right {
+            transform: translateX(50px);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translate(0, 0) scale(1);
+        }
+
+        .hypr-card {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid transparent;
+        }
+
+        .hypr-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: #751FFF;
+            box-shadow: 0 0 20px rgba(117, 31, 255, 0.2);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(1deg);
+            }
+        }
+
+        .animate-float {
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
+        }
+
+        .dropdown-parent:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 24px;
+            transition: all 0.2s ease;
+            color: #475569;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(117, 31, 255, 0.06);
+            color: #751FFF;
+            padding-left: 28px;
+        }
+
+        .dropdown-item i {
+            flex-shrink: 0;
+        }
+
+        .dropdown-item+.dropdown-item {
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #751FFF;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body class="text-slate-900">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-500 py-6" id="mainNav">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div
+                class="flex justify-between items-center h-16 glass rounded-2xl px-8 shadow-sm border border-slate-200/50">
+                <a href="index.html" class="flex items-center gap-4 cursor-pointer">
+                    <img src="https://static.wixstatic.com/media/5349ce_c4d8e09464dc407191330009a29ba4cf~mv2.png"
+                        alt="Logo" class="h-10 w-auto">
+                    <span class="font-extrabold text-2xl tracking-tighter hidden sm:block">AIC-JKLU</span>
+                </a>
+
+                <div class="hidden md:flex space-x-10 items-center font-bold text-slate-600">
+                    <a href="index.html" class="hover:text-[#751FFF] transition-colors">Home</a>
+
+                    <div class="dropdown-parent relative group">
+                        <a href="#" class="hover:text-[#751FFF] transition-colors flex items-center gap-1">
+                            Programs
+                            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                        </a>
+                        <div
+                            class="dropdown-menu absolute top-full left-1/2 -translate-x-1/2 pt-4 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <div class="glass rounded-2xl shadow-2xl border border-slate-200/50 overflow-hidden">
+                                <a href="incubation.html"
+                                    class="dropdown-item flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors">
+                                    <i data-lucide="rocket" class="w-5 h-5 text-indigo-500"></i>
+                                    Incubation Program
+                                </a>
+                                <a href="accelerator.html"
+                                    class="dropdown-item flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors">
+                                    <i data-lucide="zap" class="w-5 h-5 text-yellow-500"></i>
+                                    Accelerator Program
+                                </a>
+                                <a href="rise.html"
+                                    class="dropdown-item flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors">
+                                    <i data-lucide="sun" class="w-5 h-5 text-orange-500"></i>
+                                    RISE
+                                </a>
+                                <a href="leap.html"
+                                    class="dropdown-item flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors">
+                                    <i data-lucide="trending-up" class="w-5 h-5 text-green-500"></i>
+                                    LEAP
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-parent relative group">
+                        <a href="#" class="hover:text-[#751FFF] transition-colors flex items-center gap-1">
+                            Stakeholders
+                            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                        </a>
+                        <div
+                            class="dropdown-menu absolute top-full left-1/2 -translate-x-1/2 pt-4 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <div class="glass rounded-2xl shadow-2xl border border-slate-200/50 overflow-hidden">
+                                <a href="mentors.html"
+                                    class="dropdown-item flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <i data-lucide="lightbulb" class="w-5 h-5 text-orange-500"></i>
+                                    Mentors
+                                </a>
+                                <a href="team.html"
+                                    class="dropdown-item flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <i data-lucide="users" class="w-5 h-5 text-purple-500"></i>
+                                    Team
+                                </a>
+                                <a href="partners.html"
+                                    class="dropdown-item flex items-center gap-3 p-4 hover:bg-slate-50 transition-colors"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <i data-lucide="handshake" class="w-5 h-5 text-blue-500"></i>
+                                    Partners
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://aarohan3.vercel.app/" class="hover:text-[#751FFF] transition-colors">Aarohan
+                        3.0</a>
+                    <a href="index.html#register"
+                        class="orange-gradient text-white px-8 py-2.5 rounded-xl hover:shadow-lg hover:shadow-orange-500/30 transition-all hover:-translate-y-1">Apply
+                        Now</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[60vh] flex items-center pt-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full text-center">
+            <div class="reveal reveal-up active">
+                <div
+                    class="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-purple-100 text-purple-600 mb-6">
+                    Sector Agnostic
+                </div>
+                <h1 class="text-6xl sm:text-7xl font-black text-slate-900 mb-8 leading-[0.9] tracking-tighter">
+                    Incubation <span class="gradient-text">Program</span>
+                </h1>
+                <p class="text-xl sm:text-2xl text-slate-700 max-w-3xl mx-auto mb-12 leading-relaxed font-semibold">
+                    Engage with us to enlighten and empower the next generation of entrepreneurs — from prototype to
+                    successful venture.
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                    <div class="glass p-6 rounded-2xl hypr-card">
+                        <p class="text-3xl font-black text-purple-600">80+</p>
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Startups Supported</p>
+                    </div>
+                    <div class="glass p-6 rounded-2xl hypr-card">
+                        <p class="text-3xl font-black text-orange-500">43+</p>
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Expert Mentors</p>
+                    </div>
+                    <div class="glass p-6 rounded-2xl hypr-card">
+                        <p class="text-3xl font-black text-blue-500">33+</p>
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Labs & Facilities</p>
+                    </div>
+                    <div class="glass p-6 rounded-2xl hypr-card">
+                        <p class="text-3xl font-black text-green-500">9</p>
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Month Program</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Strip -->
+    <div class="py-12 bg-white/30 backdrop-blur-md border-y border-white/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70">
+                <span class="text-sm font-bold text-slate-500 uppercase tracking-widest">Supported By</span>
+                <span class="text-lg font-black text-slate-900">Atal Innovation Mission</span>
+                <span class="text-lg font-black text-slate-900">NITI Aayog</span>
+                <span class="text-lg font-black text-slate-900">JK Lakshmipat University</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2 reveal reveal-left">
+                    <div class="relative">
+                        <div
+                            class="absolute -inset-4 bg-gradient-to-tr from-purple-500 to-orange-500 rounded-[40px] opacity-20 blur-2xl animate-pulse">
+                        </div>
+                        <img src="https://static.wixstatic.com/media/28730e_95f252d5256746a689adc8084f560a77~mv2.jpg"
+                            alt="Incubation"
+                            class="relative rounded-[32px] shadow-2xl border border-white/50 w-full object-cover h-[400px]">
+                        <div class="absolute bottom-8 left-8 glass p-6 rounded-2xl shadow-xl">
+                            <p class="text-2xl font-black text-orange-500">Since 2019</p>
+                            <p class="text-sm font-bold text-slate-700">Top-rated AIM Incubator</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 reveal reveal-right">
+                    <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">From Idea to <span
+                            class="gradient-text">Successful Venture</span></h2>
+                    <p class="text-lg text-slate-600 mb-6 leading-relaxed font-medium">This is a 9-month intensive
+                        incubation program designed to help entrepreneurs materialize their ideas into successful
+                        ventures. It is open to individuals and groups at the prototype & scaling stage.</p>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed font-medium">The program provides training to
+                        work on ideas, business plan development, business mentoring, product development support,
+                        technical support, and access to networking events.</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSckDMJ6XaYcapHRq8TlwP1rnvEP2nEP0IPkV3QLMfviTqZBMw/viewform"
+                        target="_blank"
+                        class="px-10 py-5 orange-gradient text-white rounded-2xl font-black text-lg hover:scale-105 active:scale-95 transition-all shadow-xl shadow-orange-500/40 inline-flex items-center gap-3">
+                        Apply Now <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Perks Section -->
+    <section class="py-24 bg-white/20">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-5xl font-black text-slate-900 mb-16 reveal reveal-up">Program <span
+                    class="gradient-text">Benefits</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glass p-8 rounded-[32px] hypr-card reveal reveal-up">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                        <i data-lucide="brain" class="text-blue-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Business Plan Development</h3>
+                    <p class="text-slate-500 leading-relaxed">Work with expert mentors to sharpen your business model,
+                        value proposition, and go-to-market strategy.</p>
+                </div>
+                <div class="glass p-8 rounded-[32px] hypr-card reveal reveal-up" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                        <i data-lucide="microscope" class="text-orange-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Product Development</h3>
+                    <p class="text-slate-500 leading-relaxed">Access 33+ state-of-the-art labs in design, engineering,
+                        and computing to build and iterate your product.</p>
+                </div>
+                <div class="glass p-8 rounded-[32px] hypr-card reveal reveal-up" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                        <i data-lucide="banknote" class="text-green-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Funding Access</h3>
+                    <p class="text-slate-500 leading-relaxed">Grants up to ₹20 Lakh for prototype-stage startups and
+                        investment support up to ₹50 Lakh.</p>
+                </div>
+                <div class="glass p-8 rounded-[32px] hypr-card reveal reveal-up" style="transition-delay: 300ms;">
+                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                        <i data-lucide="users-round" class="text-purple-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Mentor Matching</h3>
+                    <p class="text-slate-500 leading-relaxed">Connect with 43+ domain experts through a structured
+                        mentor matching program with weekly check-ins.</p>
+                </div>
+                <div class="glass p-8 rounded-[32px] hypr-card reveal reveal-up" style="transition-delay: 400ms;">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                        <i data-lucide="globe" class="text-indigo-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Networking Events</h3>
+                    <p class="text-slate-500 leading-relaxed">Gain access to national and international startup
+                        ecosystems, investor networks, and industry partners.</p>
+                </div>
+                <div class="glass p-8 rounded-[32px] hypr-card reveal reveal-up" style="transition-delay: 500ms;">
+                    <div class="w-16 h-16 bg-pink-100 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                        <i data-lucide="briefcase" class="text-pink-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Auxiliary Services</h3>
+                    <p class="text-slate-500 leading-relaxed">Legal, accounting, and other critical business support
+                        services to help you focus on building your startup.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eligibility Section -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-black text-slate-900 mb-16 text-center reveal reveal-up">Eligibility & <span
+                    class="gradient-text">Selection</span></h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="glass-white p-12 rounded-[48px] shadow-xl reveal reveal-left">
+                    <h3 class="text-2xl font-black mb-6 flex items-center gap-4 text-slate-800">
+                        <i data-lucide="check-circle-2" class="text-green-500 w-8 h-8"></i> Eligibility Criteria
+                    </h3>
+                    <p class="text-lg text-slate-600 font-medium leading-relaxed mb-8">Entrepreneurs and individuals
+                        working on innovative products, services, and processes. Applicants should be at the prototype
+                        or scaling stage.</p>
+                    <div class="p-6 bg-blue-50 border-l-4 border-blue-500 rounded-r-2xl">
+                        <p class="text-blue-700 font-bold">Sectors: Energy, Eldercare, Sustainability, Fintech,
+                            Agritech, Ed-tech, EVs & more.</p>
+                    </div>
+                </div>
+                <div class="glass-white p-12 rounded-[48px] shadow-xl reveal reveal-right">
+                    <h3 class="text-2xl font-black mb-8 flex items-center gap-4 text-slate-800">
+                        <i data-lucide="clipboard-list" class="text-purple-500 w-8 h-8"></i> Selection Process
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 bg-slate-900 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                                1</div>
+                            <p class="text-slate-600 font-bold">Application evaluation by AIC committee.</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 bg-slate-900 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                                2</div>
+                            <p class="text-slate-600 font-bold">In-person/Online discussion for shortlisted startups.
+                            </p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 bg-slate-900 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                                3</div>
+                            <p class="text-slate-600 font-bold">Recommendation to Director, AIC for approval.</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 bg-slate-900 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                                4</div>
+                            <p class="text-slate-600 font-bold">MoU signing and registration with AIC-JKLU.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tenure Section -->
+    <section class="py-24 bg-slate-900/90 backdrop-blur-2xl text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <h2 class="text-5xl font-black mb-16 text-center reveal reveal-up">Program <span
+                    class="text-orange-500">Structure</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass p-10 rounded-[32px] border-white/10 hypr-card reveal reveal-up">
+                    <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="graduation-cap" class="text-orange-500 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Graduation</h3>
+                    <p class="text-slate-400 font-medium">9-month intensive program. Complete the cycle and join our
+                        elite alumni network.</p>
+                </div>
+                <div class="glass p-10 rounded-[32px] border-white/10 hypr-card reveal reveal-up"
+                    style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="building" class="text-orange-500 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Workspace</h3>
+                    <p class="text-slate-400 font-medium">Access premium co-working spaces with specialized labs and
+                        support infrastructure.</p>
+                </div>
+                <div class="glass p-10 rounded-[32px] border-white/10 hypr-card reveal reveal-up"
+                    style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="refresh-cw" class="text-orange-500 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Flexibility</h3>
+                    <p class="text-slate-400 font-medium">Extendable stay up to 3 additional months based on performance
+                        and discretion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Funding Section -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-black text-slate-900 mb-16 text-center reveal reveal-up">Financial <span
+                    class="gradient-text">Support</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-white p-10 rounded-[40px] text-center hypr-card reveal reveal-up">
+                    <p class="text-slate-500 font-bold uppercase tracking-widest text-xs mb-4">Prototype Stage</p>
+                    <p class="text-4xl font-black text-purple-600 mb-2">₹20 Lakh</p>
+                    <p class="text-lg font-bold text-slate-800 mb-6">Non-Dilutive Grant</p>
+                    <p class="text-slate-500">Perfect for validating your product and building the initial MVP.</p>
+                </div>
+                <div class="glass-white p-10 rounded-[40px] text-center hypr-card reveal reveal-up border-orange-200"
+                    style="transition-delay: 100ms;">
+                    <p class="text-orange-500 font-bold uppercase tracking-widest text-xs mb-4">Growth Stage</p>
+                    <p class="text-4xl font-black text-orange-500 mb-2">₹50 Lakh</p>
+                    <p class="text-lg font-bold text-slate-800 mb-6">OCD / CCD Investment</p>
+                    <p class="text-slate-500">Strategic capital to scale your operations and market reach.</p>
+                </div>
+                <div class="glass-white p-10 rounded-[40px] text-center hypr-card reveal reveal-up"
+                    style="transition-delay: 200ms;">
+                    <p class="text-slate-500 font-bold uppercase tracking-widest text-xs mb-4">All Stages</p>
+                    <p class="text-4xl font-black text-blue-600 mb-2">₹12.5 Lakh</p>
+                    <p class="text-lg font-bold text-slate-800 mb-6">Co-Investment</p>
+                    <p class="text-slate-500">Matching co-investment opportunities with our partner network.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pt-20 pb-12 relative z-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="glass rounded-[32px] p-8 md:p-16 shadow-2xl border border-white/50">
+                <div class="grid md:grid-cols-4 gap-16 mb-16">
+                    <div class="md:col-span-2 space-y-8 pr-12">
+                        <img src="https://static.wixstatic.com/media/5349ce_c4d8e09464dc407191330009a29ba4cf~mv2.png"
+                            alt="Logo" class="h-16">
+                        <p class="text-slate-500 max-w-sm text-lg leading-relaxed font-medium">Atal Incubation Centre
+                            (AIC) is an initiative of the Atal Innovation Mission, NITI Aayog to promote a culture of
+                            innovation and entrepreneurship.</p>
+                    </div>
+                    <div class="md:border-l md:border-slate-200/50 md:pl-12">
+                        <h4 class="font-black mb-8 text-indigo-600 uppercase tracking-widest text-xs">Quick Links</h4>
+                        <ul class="space-y-4 text-slate-600 font-bold">
+                            <li><a href="index.html"
+                                    class="hover:text-indigo-600 transition-colors flex items-center gap-2"><span
+                                        class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span> Home</a></li>
+                            <li><a href="incubation.html"
+                                    class="hover:text-indigo-600 transition-colors flex items-center gap-2"><span
+                                        class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span> Incubation</a></li>
+                            <li><a href="mentors.html"
+                                    class="hover:text-indigo-600 transition-colors flex items-center gap-2"><span
+                                        class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span> Mentors</a></li>
+                        </ul>
+                    </div>
+                    <div class="md:border-l md:border-slate-200/50 md:pl-12 space-y-8">
+                        <div>
+                            <h4 class="font-black mb-8 text-orange-600 uppercase tracking-widest text-xs">The Hub</h4>
+                            <div class="flex gap-3">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-orange-500 shrink-0"></i>
+                                <p class="text-slate-600 leading-relaxed font-bold">AIC-JKLU Campus, Jaipur 302026,
+                                    Rajasthan</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-8 border-t border-slate-200/50 text-center text-slate-500 text-sm font-bold">
+                    <p>© 2026 JK Lakshmipat University. Supported by AIM, NITI Aayog.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, observerOptions);
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('mainNav');
+            if (window.scrollY > 80) { nav.classList.remove('py-6'); nav.classList.add('py-2'); }
+            else { nav.classList.remove('py-2'); nav.classList.add('py-6'); }
+        });
+    </script>
+</body>
+
+</html>
