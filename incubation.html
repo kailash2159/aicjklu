@@ -54,6 +54,13 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
         .glass-white {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
@@ -173,10 +180,9 @@
 
 <body class="text-slate-900">
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 transition-all duration-500 py-6" id="mainNav">
+    <nav class="fixed w-full z-50 transition-all duration-500 nav-glass" id="mainNav">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div
-                class="flex justify-between items-center h-16 glass rounded-2xl px-8 shadow-sm border border-slate-200/50">
+            <div class="flex justify-between items-center h-16 px-4">
                 <a href="index.html" class="flex items-center gap-4 cursor-pointer">
                     <img src="https://static.wixstatic.com/media/5349ce_c4d8e09464dc407191330009a29ba4cf~mv2.png"
                         alt="Logo" class="h-10 w-auto">
