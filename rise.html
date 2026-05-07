@@ -160,6 +160,11 @@
                     <span class="font-extrabold text-2xl tracking-tighter hidden sm:block">AIC-JKLU</span>
                 </a>
 
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2 text-slate-600 hover:text-[#751FFF] transition-colors" id="mobileMenuBtn">
+                    <i data-lucide="menu" class="w-8 h-8"></i>
+                </button>
+
                 <div class="hidden md:flex space-x-10 items-center font-bold text-slate-600">
                     <a href="index.html" class="hover:text-[#751FFF] transition-colors">Home</a>
 
@@ -233,6 +238,59 @@
                 </div>
             </div>
         </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobileMenu" class="fixed inset-0 z-[60] lg:hidden hidden">
+            <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-md" id="mobileMenuClose"></div>
+            <div class="absolute right-0 top-0 bottom-0 w-[300px] bg-white shadow-2xl p-8 flex flex-col gap-8 transition-transform transform translate-x-full" id="mobileMenuContent">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="font-black text-2xl tracking-tighter text-[#751FFF]">AIC-JKLU</span>
+                    <button id="mobileMenuCloseBtn" class="p-2 text-slate-400 hover:text-slate-900 transition-colors">
+                        <i data-lucide="x" class="w-8 h-8"></i>
+                    </button>
+                </div>
+                
+                <nav class="flex flex-col gap-6 text-xl font-bold text-slate-600">
+                    <a href="index.html" class="hover:text-[#751FFF] transition-colors flex items-center gap-3">
+                        <i data-lucide="home" class="w-6 h-6"></i> Home
+                    </a>
+                    <div class="flex flex-col gap-4">
+                        <span class="text-xs uppercase tracking-widest text-slate-400 font-black">Programs</span>
+                        <a href="incubation.html" class="pl-4 hover:text-[#751FFF] transition-colors flex items-center gap-3">
+                            <i data-lucide="rocket" class="w-5 h-5 text-indigo-500"></i> Incubation
+                        </a>
+                        <a href="accelerator.html" class="pl-4 hover:text-[#751FFF] transition-colors flex items-center gap-3">
+                            <i data-lucide="zap" class="w-5 h-5 text-yellow-500"></i> Accelerator
+                        </a>
+                        <a href="rise.html" class="pl-4 hover:text-[#751FFF] transition-colors flex items-center gap-3">
+                            <i data-lucide="sun" class="w-5 h-5 text-orange-500"></i> RISE
+                        </a>
+                        <a href="leap.html" class="pl-4 hover:text-[#751FFF] transition-colors flex items-center gap-3">
+                            <i data-lucide="trending-up" class="w-5 h-5 text-green-500"></i> LEAP
+                        </a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <span class="text-xs uppercase tracking-widest text-slate-400 font-black">Stakeholders</span>
+                        <a href="mentors.html" class="pl-4 hover:text-[#751FFF] transition-colors flex items-center gap-3">
+                            <i data-lucide="lightbulb" class="w-5 h-5 text-orange-500"></i> Mentors
+                        </a>
+                        <a href="team.html" class="pl-4 hover:text-[#751FFF] transition-colors flex items-center gap-3">
+                            <i data-lucide="users" class="w-5 h-5 text-purple-500"></i> Team
+                        </a>
+                        <a href="partners.html" class="pl-4 hover:text-[#751FFF] transition-colors flex items-center gap-3">
+                            <i data-lucide="handshake" class="w-5 h-5 text-blue-500"></i> Partners
+                        </a>
+                    </div>
+                    <a href="https://aarohan3.vercel.app/" class="hover:text-[#751FFF] transition-colors flex items-center gap-3">
+                        <i data-lucide="external-link" class="w-6 h-6"></i> Aarohan 3.0
+                    </a>
+                </nav>
+
+                <a href="index.html#register" id="mobileApplyBtn"
+                    class="mt-auto orange-gradient text-white px-8 py-4 rounded-2xl font-black text-center shadow-lg shadow-orange-500/30">Apply
+                    Now</a>
+            </div>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -251,7 +309,7 @@
                         A NITI Aayog Initiative
                     </div>
 
-                    <h1 class="text-6xl lg:text-[80px] font-black tracking-tighter mb-6 leading-tight">
+                    <h1 class="text-5xl lg:text-[80px] font-black tracking-tighter mb-6 leading-tight">
                         Powering <br> <span class="gradient-text">Rural India</span>
                     </h1>
 
@@ -389,7 +447,6 @@
     <script>
         lucide.createIcons();
 
-        // Nav scroll effect
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('mainNav');
             if (window.scrollY > 80) {
@@ -398,6 +455,35 @@
                 nav.classList.remove('py-2'); nav.classList.add('py-6');
             }
         });
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuContent = document.getElementById('mobileMenuContent');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const mobileMenuCloseBtn = document.getElementById('mobileMenuCloseBtn');
+        const mobileMenuLinks = document.querySelectorAll('#mobileMenu nav a, #mobileApplyBtn');
+
+        function openMobileMenu() {
+            mobileMenu.classList.remove('hidden');
+            setTimeout(() => {
+                mobileMenuContent.classList.remove('translate-x-full');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenuContent.classList.add('translate-x-full');
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 300);
+            document.body.style.overflow = 'auto';
+        }
+
+        mobileMenuBtn.addEventListener('click', openMobileMenu);
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+        mobileMenuCloseBtn.addEventListener('click', closeMobileMenu);
+        mobileMenuLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
     </script>
 </body>
 

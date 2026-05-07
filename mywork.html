@@ -64,11 +64,17 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 40px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            padding: 4rem;
+            padding: 2rem;
             max-width: 1200px;
             width: 100%;
             position: relative;
             z-index: 10;
+        }
+
+        @media (min-width: 640px) {
+            .glass-slide {
+                padding: 4rem;
+            }
         }
 
         /* Slide specific backgrounds */
@@ -215,7 +221,7 @@
                         Presentation</span>
                 </div>
 
-                <h1 class="text-6xl md:text-8xl font-black mb-6 tracking-tight reveal" style="transition-delay: 200ms;">
+                <h1 class="text-4xl md:text-8xl font-black mb-6 tracking-tight reveal" style="transition-delay: 200ms;">
                     Redefining <br><span class="gradient-text">Web Experiences</span>
                 </h1>
 
@@ -581,7 +587,7 @@
                     <i data-lucide="rocket" class="w-12 h-12 text-white"></i>
                 </div>
 
-                <h2 class="text-6xl md:text-8xl font-black mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-blue-400 to-teal-400 reveal"
+                <h2 class="text-4xl md:text-8xl font-black mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-blue-400 to-teal-400 reveal"
                     style="transition-delay: 200ms;">
                     Thank You
                 </h2>
