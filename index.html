@@ -105,14 +105,15 @@
 
         .nav-glass {
             background: #FFFFFF !important;
-            backdrop-filter: blur(25px) saturate(180%);
-            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            backdrop-filter: none;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         @media (min-width: 768px) {
             .nav-glass {
                 background: rgba(255, 255, 255, 0.5) !important;
+                backdrop-filter: blur(25px) saturate(180%);
+                -webkit-backdrop-filter: blur(25px) saturate(180%);
             }
         }
 
@@ -946,7 +947,8 @@
                     <div class="md:col-span-2 space-y-8 pr-12">
                         <img src="https://static.wixstatic.com/media/5349ce_c4d8e09464dc407191330009a29ba4cf~mv2.png"
                             alt="Logo" class="h-16">
-                        <p class="text-slate-500 max-w-sm text-lg leading-relaxed font-medium text-justify">Atal Incubation
+                        <p class="text-slate-500 max-w-sm text-lg leading-relaxed font-medium text-justify">Atal
+                            Incubation
                             Centre (AIC) is an initiative of the Atal Innovation Mission, NITI Aayog to promote a
                             culture of innovation and entrepreneurship. The AIC serves as a platform for nurturing
                             innovative ideas, promoting entrepreneurship, supporting innovators, and mentoring youth in
