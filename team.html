@@ -53,10 +53,16 @@
         }
 
         .nav-glass {
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(25px) saturate(180%);
             -webkit-backdrop-filter: blur(25px) saturate(180%);
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @media (min-width: 768px) {
+            .nav-glass {
+                background: rgba(255, 255, 255, 0.5);
+            }
         }
 
         .glass-white {
