@@ -611,12 +611,18 @@
                     </div>
                     <span class="mentor-role">Mentor</span>
                     <h3 class="mentor-name">${m.name}</h3>
+                    <div class="mt-4 flex justify-center">
+                        <a href="${m.linkedin || '#'}" class="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-slate-400 hover:text-white hover:bg-[#0A66C2] transition-all duration-300 shadow-sm" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                    </div>
                 `;
                 grid.appendChild(card);
             });
         }
 
         populateMentors();
+        lucide.createIcons();
 
         // Nav scroll effect
         window.addEventListener('scroll', () => {
