@@ -90,10 +90,16 @@
         }
 
         .hero-parallax {
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.95) 30%, rgba(255, 255, 255, 0.1) 100%), url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop');
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.95) 30%, rgba(255, 255, 255, 0.1) 100%), url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=75');
             background-attachment: fixed;
             background-position: center;
             background-size: cover;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-parallax {
+                background-image: linear-gradient(to right, rgba(255, 255, 255, 0.95) 30%, rgba(255, 255, 255, 0.1) 100%), url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=75');
+            }
         }
 
         .glass {

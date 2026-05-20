@@ -90,10 +90,16 @@
         }
 
         .hero-parallax {
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.95) 30%, rgba(255, 255, 255, 0.1) 100%), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=2000');
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.95) 30%, rgba(255, 255, 255, 0.1) 100%), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=75');
             background-attachment: fixed;
             background-position: center;
             background-size: cover;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-parallax {
+                background-image: linear-gradient(to right, rgba(255, 255, 255, 0.95) 30%, rgba(255, 255, 255, 0.1) 100%), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=75');
+            }
         }
 
         .glass {
@@ -400,8 +406,10 @@
                     <div
                         class="w-full h-[500px] rounded-[40px] bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center shadow-lg border border-white/60 relative overflow-hidden">
                         <i data-lucide="heart-handshake" class="w-48 h-48 text-purple-300 opacity-50 absolute"></i>
-                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1000"
-                            alt="Longevity Economy" class="w-full h-full object-cover z-10 opacity-90 rounded-[40px]">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=75"
+                            alt="Longevity Economy"
+                            loading="lazy"
+                            class="relative rounded-[40px] shadow-2xl border border-white/50 w-full object-cover z-10 opacity-90">
                     </div>
                 </div>
                 <div class="lg:w-1/2 reveal reveal-right">

@@ -90,10 +90,16 @@
         }
 
         .hero-parallax {
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.95) 30%, rgba(255, 255, 255, 0.1) 100%), url('https://lh3.googleusercontent.com/gps-cs-s/AHVAwep4ZoCPrDNx3saj0FN6xVSNKDmbkKndy9RkivAXroXoigCpAt2rpCbeURgwKRrnE56evToYEBsZOwK8mZLndncJTgaZb415xX2OkR7WjFXb3YwKGxMP9D3Tf0NOx7PcCB5R1orL=s1360-w1360-h1020-rw');
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.95) 30%, rgba(255, 255, 255, 0.1) 100%), url('https://lh3.googleusercontent.com/gps-cs-s/AHVAwep4ZoCPrDNx3saj0FN6xVSNKDmbkKndy9RkivAXroXoigCpAt2rpCbeURgwKRrnE56evToYEBsZOwK8mZLndncJTgaZb415xX2OkR7WjFXb3YwKGxMP9D3Tf0NOx7PcCB5R1orL=w800-rw');
             background-attachment: fixed;
             background-position: center;
             background-size: cover;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-parallax {
+                background-image: linear-gradient(to right, rgba(255, 255, 255, 0.95) 30%, rgba(255, 255, 255, 0.1) 100%), url('https://lh3.googleusercontent.com/gps-cs-s/AHVAwep4ZoCPrDNx3saj0FN6xVSNKDmbkKndy9RkivAXroXoigCpAt2rpCbeURgwKRrnE56evToYEBsZOwK8mZLndncJTgaZb415xX2OkR7WjFXb3YwKGxMP9D3Tf0NOx7PcCB5R1orL=w1400-rw');
+            }
         }
 
         .glass {
@@ -449,15 +455,15 @@
                     <!-- Full Sized Image Slider -->
                     <div class="scrolling-gallery shadow-2xl">
 
-                        <img src="https://lh3.googleusercontent.com/p/AF1QipMUseD_l2jTZrF1plW_m4BMEn79JhXf_Yc4DEX3=s1360-w1360-h1020-rw"
+                        <img class="active" src="https://lh3.googleusercontent.com/p/AF1QipMUseD_l2jTZrF1plW_m4BMEn79JhXf_Yc4DEX3=w800-rw"
                             alt="Workspace">
-                        <img src="https://lh3.googleusercontent.com/p/AF1QipMPh3cCCHXHf3ZIAAxYpdiJcw2KdSSSibFA8CCg=s1360-w1360-h1020-rw"
+                        <img data-src="https://lh3.googleusercontent.com/p/AF1QipMPh3cCCHXHf3ZIAAxYpdiJcw2KdSSSibFA8CCg=w800-rw"
                             alt="Building">
-                        <img src="https://lh3.googleusercontent.com/p/AF1QipMs6UczXdsFdap_cmPVxDDjS1onoCHmp3LV04PB=s1360-w1360-h1020-rw"
+                        <img data-src="https://lh3.googleusercontent.com/p/AF1QipMs6UczXdsFdap_cmPVxDDjS1onoCHmp3LV04PB=w800-rw"
                             alt="Campus">
-                        <img src="https://d13loartjoc1yn.cloudfront.net/upload/institute/images/large/j6.webp"
+                        <img data-src="https://d13loartjoc1yn.cloudfront.net/upload/institute/images/large/j6.webp"
                             alt="Laptop and Desk">
-                        <img src="https://www.financialexpress.com/wp-content/uploads/2023/02/Untitled-design-2023-02-21T164138.756.jpg"
+                        <img data-src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800"
                             alt="Developer Coding">
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent z-20 pointer-events-none">
@@ -529,7 +535,7 @@
                     <div class="relative aspect-video rounded-2xl overflow-hidden border-2 border-slate-100">
                         <iframe class="absolute top-0 left-0 w-full h-full"
                             src="https://www.youtube.com/embed/XWtrnEbuW74?si=ncIhrghOJA1tZQ_S"
-                            title="YouTube video player" frameborder="0"
+                            title="YouTube video player" frameborder="0" loading="lazy"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                         </iframe>
@@ -545,7 +551,7 @@
                     <div class="relative aspect-video rounded-2xl overflow-hidden border-2 border-slate-100">
                         <iframe class="absolute top-0 left-0 w-full h-full"
                             src="https://www.youtube.com/embed/sliviWi2JTA?si=MCnLwSCPnzMIOu1u"
-                            title="YouTube video player" frameborder="0"
+                            title="YouTube video player" frameborder="0" loading="lazy"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                         </iframe>
@@ -561,7 +567,7 @@
                     <div class="relative aspect-video rounded-2xl overflow-hidden border-2 border-slate-100">
                         <iframe class="absolute top-0 left-0 w-full h-full"
                             src="https://www.youtube.com/embed/kMY1eW2Phk8?si=ubTFMUyzhXmnvKYA"
-                            title="YouTube video player" frameborder="0"
+                            title="YouTube video player" frameborder="0" loading="lazy"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                         </iframe>
@@ -612,7 +618,7 @@
                         <div class="w-14 h-14 mx-auto mb-4 bg-blue-50 rounded-xl flex items-center justify-center animate-hypr"
                             style="animation-delay: 0.4s">
                             <img src="https://static.wixstatic.com/media/5349ce_9afe83019eaa4eac9a1a12202a91b940~mv2.png/v1/fill/w_166,h_166,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/image.png"
-                                alt="Mentors" class="w-8 h-8 object-contain">
+                                alt="Mentors" class="w-8 h-8 object-contain" loading="lazy">
                         </div>
                         <p class="text-3xl font-black text-slate-900 mb-1"><span class="counter"
                                 data-target="45">0</span>+</p>
@@ -678,7 +684,7 @@
                     <div
                         class="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                         <img src="https://static.wixstatic.com/media/5349ce_9afe83019eaa4eac9a1a12202a91b940~mv2.png/v1/fill/w_166,h_166,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/image.png"
-                            alt="Mentors" class="w-12 h-12 object-contain">
+                            alt="Mentors" class="w-12 h-12 object-contain" loading="lazy">
                     </div>
                     <h4 class="text-xl font-bold mb-3">Strategic Mentors</h4>
                     <p class="text-slate-500 text-sm leading-relaxed">Sector Agnostic experts with proven track records
@@ -766,9 +772,10 @@
                     onclick="window.location.href='accelerator.html'">
                     <div
                         class="w-full aspect-[4/3.5] rounded-t-[999px] overflow-hidden bg-white shadow-sm border border-slate-100 relative">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=75"
                             alt="Accelerator Team"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            loading="lazy">
                     </div>
                     <div class="bg-[#f2f3f7] p-8 pb-10 flex-grow relative transition-colors group-hover:bg-[#e8eaf0]">
                         <h3
@@ -788,9 +795,10 @@
                     onclick="window.location.href='incubation.html'" style="transition-delay: 100ms;">
                     <div
                         class="w-full aspect-[4/3.5] rounded-t-[999px] overflow-hidden bg-green-50 shadow-sm border border-slate-100 relative">
-                        <img src="https://www.hkstp.org/-/media/corpsite/assets/programmes/incubation/incubation-921-r1.jpg?mw=1980&rev=3059376f42c04db4817115519bca9531&hash=29C7292CCBFDB4A5970820099C183177"
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=75"
                             alt="Incubation Growth"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            loading="lazy">
                     </div>
                     <div class="bg-[#f2f3f7] p-8 pb-10 flex-grow relative transition-colors group-hover:bg-[#e8eaf0]">
                         <h3
@@ -810,9 +818,10 @@
                     onclick="window.location.href='rise.html'">
                     <div
                         class="w-full aspect-[4/3.5] rounded-t-[999px] overflow-hidden bg-orange-50 shadow-sm border border-slate-100 relative">
-                        <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2000&auto=format&fit=crop"
+                        <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=75"
                             alt="Rural Energy"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            loading="lazy">
                     </div>
                     <div class="bg-[#f2f3f7] p-8 pb-10 flex-grow relative transition-colors group-hover:bg-[#e8eaf0]">
                         <h3
@@ -832,9 +841,10 @@
                     onclick="window.location.href='leap.html'" style="transition-delay: 100ms;">
                     <div
                         class="w-full aspect-[4/3.5] rounded-t-[999px] overflow-hidden bg-blue-50 shadow-sm border border-slate-100 relative">
-                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1000"
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=75"
                             alt="Longevity Economy"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            loading="lazy">
                     </div>
                     <div class="bg-[#f2f3f7] p-8 pb-10 flex-grow relative transition-colors group-hover:bg-[#e8eaf0]">
                         <h3
@@ -1236,10 +1246,36 @@
         const scrollGalleryImages = document.querySelectorAll('.scrolling-gallery img');
         if (scrollGalleryImages.length > 0) {
             let currentImageIndex = 0;
+
+            // Preload a specific image index
+            const loadSliderImage = (index) => {
+                const img = scrollGalleryImages[index];
+                if (img && img.dataset.src && !img.src) {
+                    img.src = img.dataset.src;
+                }
+            };
+
+            // Preload the second image so it's ready for the first transition
+            loadSliderImage(1);
+
             setInterval(() => {
+                // Preload the next-in-line image
+                const nextIndex = (currentImageIndex + 2) % scrollGalleryImages.length;
+                loadSliderImage(nextIndex);
+
+                // Deactivate the current slide
                 scrollGalleryImages[currentImageIndex].classList.remove('active');
+                
+                // Move to next slide
                 currentImageIndex = (currentImageIndex + 1) % scrollGalleryImages.length;
-                scrollGalleryImages[currentImageIndex].classList.add('active');
+                
+                // Ensure the slide about to active has src loaded
+                const activeImg = scrollGalleryImages[currentImageIndex];
+                if (activeImg.dataset.src && !activeImg.src) {
+                    activeImg.src = activeImg.dataset.src;
+                }
+
+                activeImg.classList.add('active');
             }, 3500);
         }
     </script>

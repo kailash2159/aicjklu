@@ -90,10 +90,16 @@
         }
 
         .hero-parallax {
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.95) 30%, rgba(255, 255, 255, 0.1) 100%), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop');
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.95) 30%, rgba(255, 255, 255, 0.1) 100%), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=75');
             background-attachment: fixed;
             background-position: center;
             background-size: cover;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-parallax {
+                background-image: linear-gradient(to right, rgba(255, 255, 255, 0.95) 30%, rgba(255, 255, 255, 0.1) 100%), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=75');
+            }
         }
 
         .glass {
@@ -370,6 +376,7 @@
                         </div>
                         <img src="https://static.wixstatic.com/media/28730e_95f252d5256746a689adc8084f560a77~mv2.jpg"
                             alt="Incubation"
+                            loading="lazy"
                             class="relative rounded-[40px] shadow-2xl border border-white/50 w-full object-cover h-[450px]">
                         <div class="absolute bottom-8 left-8 glass p-6 rounded-3xl shadow-xl">
                             <p class="text-2xl font-black text-orange-500">Since 2019</p>
