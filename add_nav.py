@@ -33,7 +33,7 @@ nav_html = """    <!-- Navigation -->
                         </div>
                     </div>
                     <a href="index.html#aarohan" class="hover:text-[#751FFF] transition-colors" style="text-decoration: none;">Aarohan 3.0</a>
-                    <a href="index.html#register" class="bg-gradient-to-r from-[#F27124] to-[#ff8c42] text-white px-8 py-2.5 rounded-xl hover:shadow-lg hover:shadow-orange-500/30 transition-all hover:-translate-y-1" style="text-decoration: none; background: linear-gradient(135deg, #F27124 0%, #ff8c42 100%); color: white;">Apply Now</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfTW5CndtgVpJ78AVM0VjSPmurPqihz8-2hS4M7pj-PnPvygw/viewform?usp=publish-editor" target="_blank" class="bg-gradient-to-r from-[#F27124] to-[#ff8c42] text-white px-8 py-2.5 rounded-xl hover:shadow-lg hover:shadow-orange-500/30 transition-all hover:-translate-y-1" style="text-decoration: none; background: linear-gradient(135deg, #F27124 0%, #ff8c42 100%); color: white;">Apply Now</a>
                 </div>
             </div>
         </div>
